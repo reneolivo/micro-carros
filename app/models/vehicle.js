@@ -5,9 +5,10 @@ var TheSchema = new Schema({
 	model			: { type:  Schema.Types.ObjectId, ref: 'Model', required: true },
 	year			: { type: Number, required: true },
 	price			: { type: Number, required: true },
+	description		: { type: String },
 	gallery			: [
 		{
-			path		: { type: String, required: true },
+			path		: { type: String },
 			title		: { type: String },
 			description	: { type: String },
 			order		: { type: Number, default: 0 }
@@ -29,6 +30,7 @@ TheSchema.statics.$publicFields	= [
 	'model',
 	'year',
 	'price',
+	'description',
 	'gallery',
 	'color',
 	'transmission',

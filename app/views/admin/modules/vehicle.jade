@@ -34,20 +34,38 @@ block content
 					|  create
 
 			.compontent-manager.col-md-12.row
-				ul.component-display(id="vehicle-components-0")
+				ul
+				each component in model.components
+					li: label
+						input(type="checkbox", name="components[]", value=component.id)
+						span=component.name
 
-				.col-md-4
-					select.toAdd.form-control
-						option(value="") ( Component )
-						each component in model.components
-							option(value= component._id )= component.name
+			.image-manager.col-md-12.row
+					h4 Gallery
 
-				.col-md-2
+					.image-display
+						article.image
+							input.form-control(name="gallery[0][path]", placeholder="path")
+							input.form-control(name="gallery[0][title]", placeholder="title")
+							textarea.form-control(name="gallery[0][description]", placeholder="description")
+						hr
+						article.image
+							input.form-control(name="gallery[1][path]", placeholder="path")
+							input.form-control(name="gallery[1][title]", placeholder="title")
+							textarea.form-control(name="gallery[1][description]", placeholder="description")
+						hr
+						article.image
+							input.form-control(name="gallery[2][path]", placeholder="path")
+							input.form-control(name="gallery[2][title]", placeholder="title")
+							textarea.form-control(name="gallery[2][description]", placeholder="description")
+						hr
+
+						
 					button.add.btn.btn-default.btn-sm
 						i.glyphicon.glyphicon-plus
-						|  Add component
+						|  Add Image
 
-			hr
+		hr
 
 
 		each item in model.items
@@ -81,6 +99,8 @@ block content
 						|  delete
 
 				.compontent-manager.col-md-12.row
+					h4 Components
+
 					ul.component-display(id="vehicle-components-" + item._id)
 						each comp in item.components
 							li
@@ -101,5 +121,22 @@ block content
 						button.add.btn.btn-default.btn-sm
 							i.glyphicon.glyphicon-plus
 							|  Add component
+
+				.image-manager.col-md-12.row
+					h4 Gallery
+
+					.image-display
+						each image, index in item.gallery
+							article.image
+								input.form-control(name="gallery[" + index + "][path]", placeholder="path", value=image.path)
+								input.form-control(name="gallery[" + index + "][title]", placeholder="title", value=image.title)
+								textarea.form-control(name="gallery[" + index + "][description]", placeholder="description")=image.description
+
+						
+					button.add.btn.btn-default.btn-sm
+						i.glyphicon.glyphicon-plus
+						|  Add Image
+
+
 
 				hr			

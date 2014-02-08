@@ -116,6 +116,8 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
 	req.body._id = req.params.id;
 
+	console.log('UPDATE: ', req.body);
+
 	execute( '$update', req, res );
 }
 

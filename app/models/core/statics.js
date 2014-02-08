@@ -40,7 +40,9 @@ Statics.prototype.$update = function $update(object, callback) {
 	
 	if (typeof callback !== 'function') callback = function() {};
 
+	//console.log('FIND: ', object);
 	self.findOne({ _id : object._id }, function(err, result) {
+		//console.log('RESULT: ',err, result)
 		if (err) return callback( err, null );
 		if (result === null) return callback( new Error( 'document not found' ), null );
 
