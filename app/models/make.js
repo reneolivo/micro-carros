@@ -3,7 +3,7 @@ var Schema		= mongoose.Schema;
 
 var TheSchema = new Schema({
 	name	: { type: String, required: true, unique: true },
-	logo	: { type: Schema.Types.ObjectId, ref: 'Images', default: null }
+	logo	: { type: String }
 });
 
 

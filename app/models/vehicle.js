@@ -7,8 +7,10 @@ var TheSchema = new Schema({
 	price			: { type: Number, required: true },
 	gallery			: [
 		{
-			image	: { type:  Schema.Types.ObjectId, ref: 'Image', required: true },
-			order	: { type: Number, default: 0 }
+			path		: { type: String, required: true },
+			title		: { type: String },
+			description	: { type: String },
+			order		: { type: Number, default: 0 }
 		}
 	],
 	color			: { type:  Schema.Types.ObjectId, ref: 'Color' },

@@ -1,10 +1,7 @@
-var mongoose = require('mongoose');
-var Model = mongoose.model('Model');
+var CrudControllerFactory	= require( './core/crud-controller-factory' );
+var mongoose				= require('mongoose');
+var Model					= mongoose.model('Model');
 
-exports.index = function(req, res){
-	Model.find(function(err, result){
-		if(err) throw new Error(err);
+var controller				= CrudControllerFactory( Model );
 
-		res.json( result );
-	}).populate( 'make' );
-};
+module.exports				= controller;
