@@ -13,7 +13,7 @@ var Statics			= require( './core/statics' );
 TheSchema.statics	= new Statics();
 
 TheSchema.statics.$publicFields	= [ 'name', 'logo' ];
-
+/*
 TheSchema.statics.$cleanObject = function( obj ) {
 	var data = Statics.prototype.$cleanObject.apply( this, [ obj ] );
 
@@ -23,9 +23,10 @@ TheSchema.statics.$cleanObject = function( obj ) {
 
 	return data;
 }
+*/
 
 TheSchema.statics.$find = function $find(filters, callback) {
-	return this.find( filters, callback ).populate( 'logo' );
+	return this.find( filters, callback );
 }
 
 //###### SET UP: ######//

@@ -12,6 +12,7 @@ block content
 				button.btn.btn-success(type="submit")
 					i.glyphicon.glyphicon-plus
 					|  Create
+		hr
 
 		
 		each item in model.items
@@ -28,5 +29,7 @@ block content
 					a.btn.btn-warning(href= "/admin/component/delete/" + item._id ) 
 						i.glyphicon.glyphicon-remove
 						|  delete
+
+			hr
 
 

@@ -8,25 +8,9 @@ var Color		= mongoose.model( 'Color' );
 
 
 exports.index = function(req, res){
-	async.map(
-		[
-			Make,
-			Model,
-			Color
-		],
-		function search(model, callback) {
-			model.find( callback );
-		},
-		function(err, results) {
-			res.render('admin/index', {
-				data: {
-					make	: results[ 0 ],
-					model	: results[ 1 ],
-					color	: results[ 2 ]
-				}
-			});
-		}
-	);
+	res.render('admin/index', {
+		
+	});
 }
 
 //###### MODULES: ######//
@@ -54,11 +38,6 @@ var requirements = {
 			if (err) throw new Error( err );
 
 			callback( result );
-		});
-	},
-	make	: function(module, req, res, callback) {
-		this.allOf('Image', req, res, function(result) {
-			callback( { images: result } )
 		});
 	},
 	model	: function(module, req, res, callback) {

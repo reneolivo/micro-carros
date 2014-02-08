@@ -1,43 +1,44 @@
 extends ../layout
 
 block content
-	#make-admin.col-md-8
+	#make-admin.col-md-12
 		h1 Make
 
 		form.new.row( action= "/admin/make/create", method="post" )
-			.col-md-4
+			.col-md-3.col-md-offset-2
 				input.form-control(name="name", placeholder="name")
 
-			.col-md-4
-				select.form-control(name="logo")
-					option(value="") ( logo )
-					each image in model.images
-						option(value=image._id)= image.path
+			.col-md-3
+				input.form-control(name="logo", placeholder="logo")
 
-			.col-md-2
+			.col-md-1
 				button.btn.btn-success(type="submit")
 					i.glyphicon.glyphicon-plus
 					|  Create
 
+		hr
+
 		
 		each item in model.items
 			form.row( action= "/admin/make/update/" + item._id, method="post" )
-				.col-md-4
+				.image.col-md-2
+					img.img-responsive(src=item.logo, alt="Brand Logo")
+
+				.col-md-3
 					input.form-control(name="name", placeholder="name", value=item.name)
 
-				.col-md-4
-					select.form-control(name="logo")
-						option(value="") ( logo )
-						each image in model.images
-							option(value=image._id, selected=(item.logo + '') == (image._id + ''))= image.path
+				.col-md-3
+					input.form-control(name="logo", placeholder="logo", value=item.logo)
 
-				.col-md-2
+				.col-md-1
 					button.btn.btn-info(type="submit", value="update") 
 						i.glyphicon.glyphicon-floppy-disk
 						|  update
 
-				.col-md-2
+				.col-md-1
 					a.btn.btn-warning(href= "/admin/make/delete/" + item._id ) 
 						i.glyphicon.glyphicon-remove
 						|  delete
+
+			hr
 

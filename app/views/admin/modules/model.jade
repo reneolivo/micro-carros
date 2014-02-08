@@ -19,6 +19,8 @@ block content
 					i.glyphicon.glyphicon-plus
 					|  create
 
+		hr
+
 
 		each item in model.items
 			form.row(action= "/admin/model/update/" + item._id, method="post" )
@@ -26,7 +28,7 @@ block content
 					select.form-control(name="make")
 						option ( Make )
 						each make in model.make
-							option(value=make._id, selected= ( item.make + '') == ( make._id + ''))= make.name
+							option(value=make._id, selected=(item.make && item.make.equals( make )))= make.name
 
 				.col-md-4
 					input.form-control(name="name", placeholder="name", value= item.name)
@@ -40,5 +42,7 @@ block content
 					a.btn.btn-warning(href= "/admin/model/delete/" + item._id ) 
 						i.glyphicon.glyphicon-remove
 						|  delete
+
+			hr
 
 						

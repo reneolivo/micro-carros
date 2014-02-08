@@ -8,7 +8,17 @@ html
 		
 	body
 		#wrapper.container
-			h1 Admin
+			header#main-header
+				nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+					.navbar-header
+						a.navbar-brand(href="/admin/") Admin
+
+					ul.nav.navbar-nav
+						li: a(href="/admin/make") Makers
+						li: a(href="/admin/model") Models
+						li: a(href="/admin/color") Colors
+						li: a(href="/admin/component") Components
+						li: a(href="/admin/vehicle") Vehicles
 
 			#content
 				block content

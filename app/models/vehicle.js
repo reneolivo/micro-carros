@@ -39,7 +39,6 @@ TheSchema.statics.$find = function $find(filters, callback) {
 	return this.find( filters, callback )
 		.populate( 'model' )
 		.populate( 'color' )
-		.populate( 'gallery.image' )
 		.populate( 'components' )
 	;
 }

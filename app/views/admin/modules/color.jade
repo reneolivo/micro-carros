@@ -16,6 +16,8 @@ block content
 					i.glyphicon.glyphicon-plus
 					|  Create
 
+		hr
+
 		
 		each item in model.items
 			form.row( action= "/admin/color/update/" + item._id, method="post" )
@@ -34,5 +36,6 @@ block content
 					a.btn.btn-warning(href= "/admin/color/delete/" + item._id ) 
 						i.glyphicon.glyphicon-remove
 						|  delete
+			hr
 
 
