@@ -38,11 +38,22 @@ TheSchema.statics.$publicFields	= [
 ];
 
 TheSchema.statics.$find = function $find(filters, callback) {
-	return this.find( filters, callback )
+	//console.log('STATICS FIND: ', filters);
+	var query;
+
+	if (Array.isArray( filters ) && filters.length > 0) {
+		query = this.find( { $and : filters }, callback );
+	} else {
+		query = this.find( filters, callback );
+	}
+
+	query
 		.populate( 'model' )
 		.populate( 'color' )
 		.populate( 'components' )
 	;
+
+	return query;
 }
 
 //###### SET UP: ######//

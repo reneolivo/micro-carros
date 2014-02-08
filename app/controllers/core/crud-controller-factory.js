@@ -1,11 +1,14 @@
 var async = require('async');
 
-function CrudControllerFactory(model) {
+function CrudControllerFactory(model, filtersFN) {
 	return {
 		model	: model,
 		index	: function(req, res){
 			var query		= req.query;
-			var filters		= {};
+			var filters		= [];
+
+			if (!isUnd( filtersFN )) 
+				filters = filtersFN( req );
 
 			var limit		= (!isUnd( query.limit )) ? query.limit : 20;
 			var skip		= (!isUnd( query.skip )) ? query.skip : 0;
