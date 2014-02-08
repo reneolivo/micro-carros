@@ -49,6 +49,20 @@ function CrudControllerFactory(model) {
 				}
 			);
 		},
+		view	: function(req, res) {
+			model.$find({_id: req.params.id}, function(err, result) {
+				if (err) {
+					return res.json( { success: false, error: err.toString(), result: null } )
+				}
+				
+				if (!isUnd( result ) && result !== null && !isUnd( result[ 0 ] ))
+					result = result[ 0 ];
+				else
+					result = null;
+
+				return res.json( { success: true, result: result } );
+			});
+		},
 		create	: function(req, res) {
 			model.$create( req.body, function(err, result) {
 				if (err) {

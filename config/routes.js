@@ -21,6 +21,7 @@ module.exports = function(app){
 
 		app.get( '/api/' + name, controller.index );
 		app.post( '/api/' + name, controller.create );
+		app.get( '/api/' + name + '/:id', controller.view );
 		app.post( '/api/' + name + '/:id', controller.update );
 		app.delete( '/api/' + name + '/:id', controller.delete );
 	}
