@@ -13,15 +13,15 @@ module.exports = function(app){
 	app.get( '/admin/:model/delete/:id', admin.delete );
 
 	//API:
-	//make:
-	var make = require( '../app/controllers/make' );
-	app.get( '/api/make', make.index );
-	app.post( '/api/make', make.create );
-	app.post( '/api/make/:id', make.update );
-	app.delete( '/api/make/:id', make.delete );
+	var models = [ 'make', 'model', 'color', 'component', 'vehicle' ];
 
-	//model:
-	var model = require( '../app/controllers/model' );
-	app.get( '/api/model', model.index );
+	for(var i in models) {
+		var name		= models[ i ];
+		var controller	= require( '../app/controllers/' + name );
 
+		app.get( '/api/' + name, controller.index );
+		app.post( '/api/' + name, controller.create );
+		app.post( '/api/' + name + '/:id', controller.update );
+		app.delete( '/api/' + name + '/:id', controller.delete );
+	}
 };

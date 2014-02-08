@@ -8,7 +8,7 @@ function CrudControllerFactory(model) {
 			var filters		= {};
 
 			var limit		= (!isUnd( query.limit )) ? query.limit : 20;
-			var skip		= (!isUnd( query.skip )) ? query.skip : 20;
+			var skip		= (!isUnd( query.skip )) ? query.skip : 0;
 
 			if (limit > 100) limit = 100;
 
@@ -18,6 +18,7 @@ function CrudControllerFactory(model) {
 								.skip( skip )
 								.sort( sort )
 							;
+
 			var count		= model.find( filters ).count();
 
 			if (!isUnd( query.sort )) {
